@@ -18,6 +18,10 @@ del lldf['dest_district_hash']
 lldf.columns = ['order_id','driver_id','passenger_id','Price','Time','start_district','dest_district']
 
 
+sorted1=lldf.sort(['start_district','time_slice'])
+
+gp=sorted1['order_id'].groupby(['start_district','time_slice'])
+
 '''
 #Too slow!
 from dateutil.parser import parse
@@ -36,10 +40,13 @@ def time_slice(s):
 order1['Time']=order1['Time'].map(time_slice)	
 lldf.columns = ['order_id','driver_id','passenger_id','Price','time_slice','start_district','dest_district']
 
+gp=sorted1['order_id'].groupby(['start_district','time_slice'])
 
 
+cnt.columns[[start_district,time_slice],order_num]
 
-
+we=cnt.unstack()
+wa=we.fillna(0)
 
 '''
 import os
